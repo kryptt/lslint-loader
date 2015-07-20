@@ -1,11 +1,11 @@
-# eslint-loader [![Build Status](http://img.shields.io/travis/MoOx/eslint-loader.svg)](https://travis-ci.org/MoOx/eslint-loader)
+# lslint-loader [![Build Status](http://img.shields.io/travis/kryptt/lslint-loader.svg)](https://travis-ci.org/kryptt/lslint-loader)
 
-> eslint loader for webpack
+> lslint loader for webpack
 
 ## Install
 
 ```console
-$ npm install eslint-loader
+$ npm install lslint-loader
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ module.exports = {
   // ...
   module: {
     loaders: [
-      {test: /\.js$/, loader: "eslint-loader", exclude: /node_modules/}
+      {test: /\.ls$/, loader: "lslint-loader", exclude: /node_modules/}
     ]
   }
   // ...
@@ -33,7 +33,7 @@ module.exports = {
   module: {
     loaders: [
       {test: /\.js$/, loader: "babel-loader", exclude: /node_modules/}
-      {test: /\.js$/, loader: "eslint-loader", exclude: /node_modules/}
+      {test: /\.js$/, loader: "lslint-loader", exclude: /node_modules/}
     ]
   }
   // ...
@@ -48,7 +48,7 @@ module.exports = {
   // ...
   module: {
     preLoaders: [
-      {test: /\.js$/, loader: "eslint-loader", exclude: /node_modules/}
+      {test: /\.js$/, loader: "lslint-loader", exclude: /node_modules/}
     ]
   }
   // ...
@@ -57,7 +57,7 @@ module.exports = {
 
 ### Options
 
-You can pass directly some [eslint options](http://eslint.org/docs/user-guide/command-line-interface) by
+You can pass directly some [lslint options](http://lslint.org/docs/user-guide/command-line-interface) by
 
 - Adding a query string to the loader for this loader usabe only
 
@@ -67,7 +67,7 @@ You can pass directly some [eslint options](http://eslint.org/docs/user-guide/co
     preLoaders: [
       {
         test: /\.js$/,
-        loader: "eslint-loader?{rules:[{semi:0}]}",
+        loader: "lslint-loader?{rules:[{semi:0}]}",
         exclude: /node_modules/,
       },
     ],
@@ -75,23 +75,23 @@ You can pass directly some [eslint options](http://eslint.org/docs/user-guide/co
 }
 ```
 
-- Adding an `eslint` entry in you webpack config for global options:
+- Adding an `lslint` entry in you webpack config for global options:
 
 ```js
 module.exports = {
-  eslint: {
-    configFile: 'path/.eslintrc'
+  lslint: {
+    configFile: 'path/.lslintrc'
   }
 }
 ```
 
 **Note that you can use both method in order to benefit from global & specific options**
 
-#### `formatter` (default: eslint stylish formatter)
+#### `formatter` (default: lslint stylish formatter)
 
-Loader accepts a function that will have one argument: an array of eslint messages (object).
+Loader accepts a function that will have one argument: an array of lslint messages (object).
 The function must return the output as a string.
-You can use official eslint formatters.
+You can use official lslint formatters.
 
 ```js
 module.exports = {
@@ -99,24 +99,22 @@ module.exports = {
   module: {
     // ...
   }
-  eslint: {
-    // several examples !
-
-    // default value
-    formatter: require("eslint/lib/formatters/stylish"),
-
-    // community formatter
-    formatter: require("eslint-friendly-formatter"),
-
-    // custom formatter
-    formatter: function(results) {
-      // `results` format is available here
-      // http://eslint.org/docs/developer-guide/nodejs-api.html#executeonfiles()
-      
-      // you should return a string
-      // DO NOT USE console.*() directly !
-      return "OUTPUT"
-    }
+  lslint: {
+    allow-class: no,
+    allow-new: no,
+    allow-return: no,
+    allow-throw: no,
+    allow-break: no,
+    allow-continue: no,
+    allow-while: no,
+    allow-case: yes,
+    allow-default: no,
+    allow-null: no,
+    allow-void: no,
+    allow-this: no,
+    allow-delete: no,
+    allow-eval: no,
+    enforce-pascal-case-class-name: yes
   }
 }
 ```
@@ -124,7 +122,7 @@ module.exports = {
 #### Errors and Warning
 
 **By default the loader will auto adjust error reporting depending
-on eslint errors/warnings counts.**
+on lslint errors/warnings counts.**
 You can still force this behavior by using `emitError` **or** `emitWarning` options:
 
 ##### `emitError` (default: `false`)
@@ -137,7 +135,7 @@ module.exports = {
   module: {
     // ...
   }
-  eslint: {
+  lslint: {
     emitError: true
   }
 }
@@ -157,7 +155,7 @@ module.exports = {
   module: {
     // ...
   }
-  eslint: {
+  lslint: {
     quiet: true
   }
 }
@@ -165,7 +163,7 @@ module.exports = {
 
 ##### `failOnWarning` (default: `false`)
 
-Loader will cause the module build to fail if there are any eslint warnings.
+Loader will cause the module build to fail if there are any lslint warnings.
 
 ```js
 module.exports = {
@@ -173,7 +171,7 @@ module.exports = {
   module: {
     // ...
   }
-  eslint: {
+  lslint: {
     failOnWarning: true
   }
 }
@@ -181,7 +179,7 @@ module.exports = {
 
 ##### `failOnError` (default: `false`)
 
-Loader will cause the module build to fail if there are any eslint errors.
+Loader will cause the module build to fail if there are any lslint errors.
 
 ```js
 module.exports = {
@@ -189,7 +187,7 @@ module.exports = {
   module: {
     // ...
   }
-  eslint: {
+  lslint: {
     failOnError: true
   }
 }
@@ -199,10 +197,10 @@ module.exports = {
 
 ### NoErrorsPlugin
 
-`NoErrorsPlugin` prevents Webpack from outputting anything into a bundle. So even ESLint warnings
-will fail the build. No matter what error settings are used for `eslint-loader`.
+`NoErrorsPlugin` prevents Webpack from outputting anything into a bundle. So even Lslint warnings
+will fail the build. No matter what error settings are used for `lslint-loader`.
 
-So if you want to see ESLint warnings in console during development using `WebpackDevServer`
+So if you want to see Lslint warnings in console during development using `WebpackDevServer`
 remove `NoErrorsPlugin` from webpack config.
 
 ## [Changelog](CHANGELOG.md)

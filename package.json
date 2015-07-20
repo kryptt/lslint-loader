@@ -1,44 +1,41 @@
 {
-  "name": "eslint-loader",
-  "version": "0.14.2",
-  "description": "eslint loader (for webpack)",
+  "name": "lslint-loader",
+  "version": "0.0.1",
+  "description": "lslint loader (for webpack)",
   "keywords": [
     "lint",
     "linter",
-    "eslint",
+    "lslint",
+    "lint-ls",
     "loader",
     "webpack"
   ],
-  "author": "Maxime Thirouin",
+  "author": "Rodolfo Hansen",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MoOx/eslint-loader.git"
+    "url": "https://github.com/kryptt/lslint-loader.git"
   },
-  "homepage": "https://github.com/MoOx/eslint-loader",
+  "homepage": "https://github.com/kryptt/lslint-loader",
   "bugs": {
-    "url": "https://github.com/MoOx/eslint-loader/issues"
+    "url": "https://github.com/kryptt/lslint-loader/issues"
   },
   "files": [
     "CHANGELOG.md",
     "LICENSE",
-    "index.js"
+    "index.ls"
   ],
   "peerDependencies": {
-    "eslint": "0.21 - 0.24 || ~1.0.0-rc-0"
+    "lint-ls": "^0.5.1"
   },
   "dependencies": {
     "loader-utils": "^0.2.7",
     "object-assign": "^3.0.0"
   },
   "devDependencies": {
-    "eslint": "^1.0.0-rc-1",
-    "eslint-friendly-formatter": "^1.0.3",
+    "livescript": "^1.4.0",
+    "lint-ls": "^0.5.1",
     "tape": "^4.0.0",
     "webpack": "^1.8.4"
-  },
-  "scripts": {
-    "lint": "eslint .",
-    "test": "npm run lint && tape test/*.js"
   }
 }
